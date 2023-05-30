@@ -1,0 +1,40 @@
+---
+title: Christ Church History
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <main>
+        <h1 id="site-title">Christ Church History</h1>
+        <input type="checkbox" id="toggle">
+        <nav>
+        {%- for post in collections.code -%}
+            <a href="{{post.url}}"{% if page.url == post.url %} aria-current="page" class="current-tab"{% endif %}>{{ post.data.title }}</a>
+        {%- endfor -%}
+        </nav>
+        <article>
+            <aside>
+                {% if portrait %}
+                <img id="portrait" src="{{portrait}}">
+                {% endif %}
+                {% if audio %}
+                <audio src="{{audio}}" controls="true"></audio>
+                {% endif %}
+            </aside>
+            <section id="content">
+            {{ content | safe }}
+            </section>
+        </article>
+    </main>
+    <footer>
+        &copy; 2023 Christ Church in the City of New Brunswick
+    </footer>
+  </body>
+</html>
